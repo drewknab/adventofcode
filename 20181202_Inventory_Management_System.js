@@ -5,7 +5,7 @@ const ids = input.trim()
 
 let twoCount = 0
 let threeCount = 0
-const length = ids.length;
+const length = ids.length
 
 const letterCount = array => {
   return new Map(
