@@ -41,8 +41,8 @@ status.forEach((record) => {
     start = minute
   }
 })
-
+console.log(times)
 let sleepiest = Object.keys(times).reduce((a, b) => times[a] > times[b] ? a : b)
 let asleepest = Object.keys(minutes).reduce((a, b) => minutes[a] > minutes[b] ? a : b)
 let guardiest = Object.keys(guardMinutes[sleepiest]).reduce((a, b) => guardMinutes[a] > guardMinutes[b] ? a : b)
-console.log(sleepiest * 42)
+//console.log(sleepiest * 42)
