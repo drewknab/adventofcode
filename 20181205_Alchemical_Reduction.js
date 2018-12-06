@@ -1,26 +1,25 @@
 const fs = require('fs');
-const input = fs.readFileSync('input/20181205_Alchemical_Reduction.txt', 'utf-8');
-
-const parse = input.split("")
+let input = fs.readFileSync('input/20181205_Alchemical_Reduction.txt', 'utf-8');
+// Lololololol not having .trim lost me like an hour of my life I can never have back
+let parse = input.trim().split("")
 
 const recursion = (array) => {
-  let mapArray = array.map((element, index, array) => {
-    if (array[index + 1] == undefined || array[index - 1] == undefined) {
-      return;
+  for (let i = 0; i < array.length - 1; i++) {
+    if (Math.abs(array[i].charCodeAt(0) - array[i + 1].charCodeAt(0)) == 32 ) {
+      array[i] = ""
+      array[i + 1] = ""
     }
-    
-    if (Math.abs(array[index].charCodeAt(0) - array[index + 1].charCodeAt(0)) == 32 ) {
-      return "";
-    }
-
-    if (Math.abs(array[index].charCodeAt(0) - array[index - 1].charCodeAt(0)) == 32 ) {
-      return "";
-    }
-
-    return element;
-  })
-  return (mapArray.indexOf("") > -1) ? recursion(mapArray.filter(element => element != "")) : array
+  }
+  return (array.indexOf("") > -1) ? recursion(array.filter(a => a !== "")) : array.length
 }
+// Part 1
+console.log(recursion(parse))
 
-let test = recursion(parse)
-console.log(recursion(test))
+const alpha = "abcdefghijklmnopqrstuvwxyz".split("");
+const result = alpha.map((letter) => {
+  let temp = parse.filter(a => a.toLowerCase() != letter)
+  return recursion(temp)
+}).reduce((a,b) => (a < b) ? a : b)
+
+// Part 2
+console.log(result)
