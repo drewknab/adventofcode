@@ -1,5 +1,5 @@
-# Advent of Code 2019
+# Advent of Code 2020
 
-Code written in ![VanillaJS](/assets/vanilla.png) and ![edited with Vim](/assets/vim.jpg) with just enough node to let it run smoothly in my terminal.
+Code written in F# so I can do something different.
 
 Answers may vary.
