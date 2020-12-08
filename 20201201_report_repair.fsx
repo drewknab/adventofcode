@@ -1,11 +1,6 @@
-open System
-open System.IO
+#load "helpers.fsx"
 
-let readLines (filePath : string) = seq {
-    use sr = new StreamReader (filePath)
-    while not sr.EndOfStream do
-        yield sr.ReadLine ()
-}
+open Helpers
 
 let raw = readLines "input/input1.txt"
 
@@ -19,7 +14,7 @@ let result1 =
     |> Seq.filter (fun x -> Seq.contains x numbers)
     |> Seq.reduce (fun x y -> x * y)
 
-Console.WriteLine result1
+printf "%i" result1
 
 // Cave and just do it mutably because FP is hard lol
 let result2 =
@@ -40,4 +35,4 @@ let result2 =
                 right <- right - 1
     returnValue
 
-Console.WriteLine result2
+printf "%i" result2

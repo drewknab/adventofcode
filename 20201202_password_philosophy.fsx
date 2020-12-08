@@ -1,11 +1,6 @@
-open System
-open System.IO
+#load "helpers.fsx"
 
-let readLines (filePath : string) = seq {
-    use sr = new StreamReader (filePath)
-    while not sr.EndOfStream do
-        yield sr.ReadLine ()
-}
+open Helpers
 
 let raw = readLines "input/input2.txt"
 
@@ -43,7 +38,7 @@ let result1 =
     |> Seq.filter validFilter
     |> Seq.length
 
-Console.WriteLine result1
+printf "%i" result1
 
 let complexFilter passwordRule = 
     let firstPostion = passwordRule.password.[passwordRule.min - 1].ToString()
@@ -57,4 +52,5 @@ let result2 =
     |> Seq.filter complexFilter
     |> Seq.length
 
-Console.WriteLine result2
+
+printf "%i" result2
