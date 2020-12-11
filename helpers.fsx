@@ -6,3 +6,7 @@ let readLines (filePath : string) = seq {
     while not sr.EndOfStream do
         yield sr.ReadLine ()
 }
+
+let readString (filePath : string) =
+    use sr = new StreamReader (filePath)
+    sr.ReadToEnd ()
