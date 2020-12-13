@@ -12,7 +12,7 @@ let result1 =
     numbers
     |> Seq.map (fun x -> 2020 - x)
     |> Seq.filter (fun x -> Seq.contains x numbers)
-    |> Seq.reduce (fun x y -> x * y)
+    |> Seq.reduce ( * )
 
 printf "%i" result1
 

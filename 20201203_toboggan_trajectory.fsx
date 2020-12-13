@@ -54,19 +54,19 @@ let result1 =
 
     grid
     |> Seq.mapi (fun i x -> plotCourse i slope x)
-    |> Seq.reduce (fun x y -> x + y)
+    |> Seq.reduce ( + )
 
 printf "%i" result1
 
 let plotCourses index slope items =
     items
     |> Seq.mapi (fun i x -> plotCourse i slope x)
-    |> Seq.reduce (fun x y -> x + y)
+    |> Seq.reduce ( + )
 
 let result2 =
     slopeSeq
     |> Seq.mapi (fun i x -> plotCourses i x grid )
     // |> Seq.iter (fun i -> Console.WriteLine i)
-    |> Seq.reduce (fun x y -> x * y)
+    |> Seq.reduce ( * )
 
 sprintf "%i" result2

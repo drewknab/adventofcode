@@ -57,7 +57,7 @@ let allRequired =
     raw.Split("\n\n")
     |> Array.toList
     |> List.map (fun x -> x.Replace("\n", " ").Split(" ") |> Array.toList |> parser)
-    |> List.filter (fun x -> passportTester x)
+    |> List.filter (passportTester)
 
 printf "part 1: %i \n" (allRequired |> List.length)
 
@@ -72,6 +72,6 @@ let passportSecondPass (passport : Collections.Generic.Dictionary<string, string
 
 let finalValid =
     allRequired
-    |> List.filter (fun x -> passportSecondPass x)
+    |> List.filter (passportSecondPass)
 
 printf "part 2: %i" (finalValid |> List.length)

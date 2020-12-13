@@ -38,14 +38,14 @@ let result1 =
     |> Seq.filter validFilter
     |> Seq.length
 
-printf "%i" result1
+printf "%i \n" result1
 
 let complexFilter passwordRule = 
     let firstPostion = passwordRule.password.[passwordRule.min - 1].ToString()
     let secondPosition = passwordRule.password.[passwordRule.max - 1].ToString()
 
-    (firstPostion = passwordRule.character && secondPosition <> passwordRule.character) ||
-    (firstPostion <> passwordRule.character && secondPosition = passwordRule.character)
+    (firstPostion = passwordRule.character || secondPosition = passwordRule.character) &&
+    firstPostion <> secondPosition
 
 let result2 = 
     passwordRules

@@ -31,8 +31,8 @@ let findSeatId (ticket : string) : int =
 
 let sorted =
     raw
-    |> List.map (fun ticket -> findSeatId ticket)
-    |> List.sortByDescending (fun x -> x)
+    |> List.map (findSeatId)
+    |> List.sortByDescending (id)
 
 printf "%i \n" (List.item 0 sorted)
 
