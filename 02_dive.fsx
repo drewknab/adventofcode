@@ -34,6 +34,7 @@ let part1Plotter (instructions : list<Instruction>) =
         | "up" -> x.Depth <- x.Depth - y.Degree
         | "down" -> x.Depth <- x.Depth + y.Degree
         | "forward" -> x.Horizon <- x.Horizon + y.Degree
+        | _ -> ()
         x
 
     instructions
