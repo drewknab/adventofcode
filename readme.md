@@ -1,5 +1,5 @@
-# Advent of Code 2021
+# Advent of Code 2022
 
-Code written in F# so I can do something different.
+Code written in Elixir this year.
 
 Answers may vary.
