@@ -12,6 +12,7 @@ class Trebuchet
         {"eighthree", 83},
         {"nineight", 98}
       ]
+
       @number_strings = [
         "zero",
         "one",
@@ -24,6 +25,7 @@ class Trebuchet
         "eight",
         "nine"
       ]
+
       @content = File.read(file).rstrip()
     end
 
@@ -47,32 +49,29 @@ class Trebuchet
       find_the_sum(temp_content.split("\n"))
     end
 
-    def convert_number_names_to_integers(word, integer, content)
+    private def convert_number_names_to_integers(word, integer, content)
       content.gsub(word) {"#{integer}"}
     end
 
-    def find_the_sum(content)
+    private def find_the_sum(content)
       content.reduce(0) do |acc, i|
-        acc += find_value(i)
+        acc += find_value(i).to_i
       end
     end
 
-    def find_value(i)
+    private def find_value(i)
       digits = scan_for_digits(i)
       size = digits.size
+
       case
-      when size == 0
-        0
-      when size == 1 
-        "#{digits.first()}#{digits.first()}".to_i
-      when size > 2
-        "#{digits.first()}#{digits.last()}".to_i
-      else
-        digits.join("").to_i
+        when size == 0 then "0"
+        when size == 1 then "#{digits.first()}#{digits.first()}"
+        when size > 2 then "#{digits.first()}#{digits.last()}"
+        else digits.join("")
       end
     end
 
-    def scan_for_digits(value)
-      value.scan(/\d/).flat_map(&.to_a)#.reject{ |value| value.size < 2 }
+    private def scan_for_digits(value)
+      value.scan(/\d/).flat_map(&.to_a)
     end
 end
