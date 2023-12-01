@@ -1,5 +1,5 @@
-# Advent of Code 2022
+# Advent of Code 2023
 
-Code written in Elixir this year.
+Code written in Crystal this year.
 
 Answers may vary.
