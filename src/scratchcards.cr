@@ -11,6 +11,14 @@ class Scratchcards
     @cards = games.map do |game|
       Card.new game
     end
+
+    @cards.each_with_index do |card, index|
+      if card.winner
+        ((index + 1)..(index + card.winning_numbers_held.size)).each do |number|
+          @cards[number].add_count(card.count)
+        end
+      end
+    end
   end
 
   def part_1
@@ -29,15 +37,7 @@ class Scratchcards
   end
 
   def part_2
-    
-  end
-
-  private def winning_multiplier(size : Int32) : Int32
-    if size == 1
-      1
-    else
-      Math.exp2(size).to_i
-    end
+    @cards.reduce(0) { |acc, card| acc += card.count }
   end
 end
 
@@ -47,6 +47,7 @@ class Card
   @held_numbers : Set(Int32)
   @winning_numbers_held : Set(Int32)
   @winner : Bool
+  @count : Int32
 
   def initialize(card)
     partial = card.split(": ")
@@ -57,16 +58,33 @@ class Card
     @held_numbers = transform_card_numbers(card_numbers[1]).to_set
     @winning_numbers_held = @held_numbers & @winning_numbers
     @winner = !@winning_numbers_held.empty?
+    @count = 1
+  end
+
+  def id
+    @id
+  end
+
+  def winner
+    @winner
   end
 
   def winning_numbers_held
     @winning_numbers_held
   end
 
+  def count
+    @count
+  end
+
+  def add_count(added_value)
+    @count += added_value
+  end
+
   private def transform_card_numbers(card_numbers)
     card_numbers
       .split(" ")
-      .reject{ |number| number == ""}
+      .reject{ |number| number == "" }
       .map { |number| number.to_i } 
   end
 end
