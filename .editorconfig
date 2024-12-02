@@ -1,3 +1,7 @@
 [*.cr]
 indent_style = space
 indent_size = 2
+
+[*.gleam]
+indent_style = space
+indent_size = 2

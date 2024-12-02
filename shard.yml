@@ -1,6 +1,0 @@
-name: aoc2024
-description: Some answers for AOC 2024
-targets:
-  aoc2023:
-    main: src/entry.cr
-
